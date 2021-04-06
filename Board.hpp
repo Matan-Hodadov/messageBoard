@@ -4,28 +4,23 @@
 #include "Direction.hpp"
 
 namespace ariel {
-    typedef unsigned int uint;
-    class Point
-    {
-        public:
-        uint x,y;
-        Point()
-        {
-            this->x = 0;
-            this->y = 0;
-        }
-    };
 
+    typedef unsigned int uint;
+    
 	class Board
     {
+        private:
+            std::vector<std::vector<char>> board;
+            void fitSize(uint row, uint col, uint len, Direction dir);
+            uint firstRow;
+            uint firstCol;
+            uint lastRow;
+            uint lastCol;
+
         public:
-        // Point
-        Board()
-        {
-            
-        }
-        void post(uint x, uint y, Direction dir, std::string str);
-        std::string read(uint x, uint y, Direction dir, uint numOfChar);
+        Board();
+        void post(uint row, uint col, Direction dir, std::string msg);
+        std::string read(uint row, uint col, Direction dir, uint len);
         void show();
     };
 }

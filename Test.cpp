@@ -82,6 +82,22 @@ TEST_CASE("crossing adds")
     CHECK(board.read(11, 2, Direction::Horizontal, 4) == string("Here"));
     board.post(8, 2, Direction::Vertical, "Kabom");
     CHECK(board.read(7, 4, Direction::Horizontal, 3) == string("nba"));
-    
+}
+
+TEST_CASE("diffrent type of chars")
+{
+    Board board;
+    board.post(1, 1, Direction::Horizontal, "7");
+    CHECK(board.read(1, 1, Direction::Horizontal, 1) == string("7"));
+    CHECK(board.read(1, 1, Direction::Vertical, 1) == string("7"));
+    board.post(2, 2, Direction::Horizontal, ">");
+    CHECK(board.read(2, 2, Direction::Horizontal, 1) == string(">"));
+    CHECK(board.read(2, 2, Direction::Vertical, 1) == string(">"));
+    board.post(1, 1, Direction::Horizontal, " ");
+    CHECK(board.read(1, 1, Direction::Horizontal, 1) == string(" "));
+    CHECK(board.read(1, 1, Direction::Vertical, 1) == string(" "));
+    board.post(3, 3, Direction::Horizontal, "\\");
+    CHECK(board.read(3, 3, Direction::Horizontal, 1) == string("\\"));
+    CHECK(board.read(3, 3, Direction::Vertical, 1) == string("\\"));
 }
 
